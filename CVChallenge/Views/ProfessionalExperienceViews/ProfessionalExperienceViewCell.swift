@@ -34,14 +34,6 @@ class ProfessionalExperienceViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        containerView?.layer.cornerRadius = 5
-        containerView?.layer.shadowColor = UIColor.black.cgColor
-        containerView?.layer.shadowOpacity = 0.5
-        containerView?.layer.shadowOffset = CGSize(width: 0, height: 1)
-        containerView?.layer.shadowRadius = 1
-        
-        companyImageView?.layer.borderColor = UIColor.black.cgColor
-        companyImageView?.layer.borderWidth = 1
         
         backgroundImageView?.translatesAutoresizingMaskIntoConstraints = false
         companyImageView?.translatesAutoresizingMaskIntoConstraints = false

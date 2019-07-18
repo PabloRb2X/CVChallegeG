@@ -13,7 +13,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView?
     @IBOutlet weak var backgroundImageView: UIImageView?
     @IBOutlet weak var photoImageView: UIImageView?
-    @IBOutlet weak var stackView: UIStackView?
     @IBOutlet weak var fullNameLabel: UILabel?
     @IBOutlet weak var profileLabel: UILabel?
     @IBOutlet weak var schoolLabel: UILabel?
@@ -41,8 +40,6 @@ class MainViewController: UIViewController {
                     self.textDescriptionLabel?.text = self.viewModel.personalData?.description ?? ""
                     self.textPhoneLabel?.text = String(viewModel.personalData?.telephone ?? 0)
                     self.textEmailLabel?.text = viewModel.personalData?.email ?? ""
-                    
-                    self.setScrollViewContentSize()
                 }
             }
             self.viewModel.dataError = { [unowned self] viewModel in
@@ -54,9 +51,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        photoImageView?.layer.borderColor = UIColor.black.cgColor
-        photoImageView?.layer.borderWidth = 1
         
         self.title = NSLocalizedString("My CV", comment: "")
         
@@ -75,34 +69,4 @@ class MainViewController: UIViewController {
             viewController.viewModel = ProfessionalExperienceViewModel()
         }
     }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        setScrollViewContentSize()
-    }
-    
-    func calculateSizeScrollView() -> CGFloat{
-        
-        var height: CGFloat = 0.0
-        height += (backgroundImageView?.frame.height ?? 0.0)
-        height += (stackView?.frame.height ?? 0.0)
-        height += (descriptionLabel?.frame.height ?? 0.0)
-        height += (textDescriptionLabel?.frame.height ?? 0.0)
-        height += (contactLabel?.frame.height ?? 0.0)
-        height += (phoneLabel?.frame.height ?? 0.0)
-        height += (textPhoneLabel?.frame.height ?? 0.0)
-        height += (emailLabel?.frame.height ?? 0.0)
-        height += (textEmailLabel?.frame.height ?? 0.0)
-        height += (showProfExpButton?.frame.height ?? 0.0)
-        height += ((photoImageView?.frame.height ?? 0.0) + 50.0 - (backgroundImageView?.frame.height ?? 0.0))
-        height += 169.0
-        
-        return height
-    }
-    
-    func setScrollViewContentSize(){
-        scrollView?.contentSize = CGSize(width: scrollView?.frame.width ?? 0, height: calculateSizeScrollView())
-    }
-    
 }

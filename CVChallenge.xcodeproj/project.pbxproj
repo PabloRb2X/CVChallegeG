@@ -79,6 +79,12 @@
 		9A7CB87E22D58FE90084DCB6 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CB87D22D58FE90084DCB6 /* ServiceManager.swift */; };
 		9A7CB87F22D58FE90084DCB6 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CB87D22D58FE90084DCB6 /* ServiceManager.swift */; };
 		9A7CB88122D599130084DCB6 /* ServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CB88022D599130084DCB6 /* ServicesTests.swift */; };
+		9AFABD8722DFF961005F6539 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFABD8522DFF961005F6539 /* CustomImageView.swift */; };
+		9AFABD8822DFF961005F6539 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFABD8522DFF961005F6539 /* CustomImageView.swift */; };
+		9AFABD8922DFF961005F6539 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFABD8522DFF961005F6539 /* CustomImageView.swift */; };
+		9AFABD8A22DFF961005F6539 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFABD8622DFF961005F6539 /* CustomView.swift */; };
+		9AFABD8B22DFF961005F6539 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFABD8622DFF961005F6539 /* CustomView.swift */; };
+		9AFABD8C22DFF961005F6539 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFABD8622DFF961005F6539 /* CustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +139,8 @@
 		9A7CB88022D599130084DCB6 /* ServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTests.swift; sourceTree = "<group>"; };
 		9AB3516322D7EC0E00A3219D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		9AB3516422D7EC0E00A3219D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		9AFABD8522DFF961005F6539 /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		9AFABD8622DFF961005F6539 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +285,8 @@
 		9A7CB85922D58EE10084DCB6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9AFABD8522DFF961005F6539 /* CustomImageView.swift */,
+				9AFABD8622DFF961005F6539 /* CustomView.swift */,
 				9A7CB87722D58FCF0084DCB6 /* Extensions.swift */,
 				9A7CB87422D58FC20084DCB6 /* Constants.swift */,
 			);
@@ -452,11 +462,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A516CBE22D6E7B7002C4F89 /* ProjectsViewController.swift in Sources */,
+				9AFABD8722DFF961005F6539 /* CustomImageView.swift in Sources */,
 				9A7CB87522D58FC20084DCB6 /* Constants.swift in Sources */,
 				9A7CB86922D58F5D0084DCB6 /* ProfessionalExperienceViewController.swift in Sources */,
 				9A7CB86022D58F170084DCB6 /* ProfessionalExperience.swift in Sources */,
 				9A7CB87222D58F970084DCB6 /* LoadingView.swift in Sources */,
 				9A516CB322D6E72E002C4F89 /* ProjectsViewCell.swift in Sources */,
+				9AFABD8A22DFF961005F6539 /* CustomView.swift in Sources */,
 				9A7CB87E22D58FE90084DCB6 /* ServiceManager.swift in Sources */,
 				9A516CB922D6E736002C4F89 /* ProfessionalExperienceViewCell.swift in Sources */,
 				9A7CB82522D58E2E0084DCB6 /* AppDelegate.swift in Sources */,
@@ -476,11 +488,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A516CBF22D6E7B7002C4F89 /* ProjectsViewController.swift in Sources */,
+				9AFABD8822DFF961005F6539 /* CustomImageView.swift in Sources */,
 				9A7CB86D22D58F6F0084DCB6 /* MainViewController.swift in Sources */,
 				9A7CB85D22D58F020084DCB6 /* PersonalData.swift in Sources */,
 				9A7CB86722D58F370084DCB6 /* ProfessionalExperienceViewModel.swift in Sources */,
 				9A7CB86122D58F170084DCB6 /* ProfessionalExperience.swift in Sources */,
 				9A7CB87922D58FCF0084DCB6 /* Extensions.swift in Sources */,
+				9AFABD8B22DFF961005F6539 /* CustomView.swift in Sources */,
 				9A516CC222D6E80E002C4F89 /* ProjectsViewModel.swift in Sources */,
 				9A516CB422D6E72E002C4F89 /* ProjectsViewCell.swift in Sources */,
 				9A516CBA22D6E736002C4F89 /* ProfessionalExperienceViewCell.swift in Sources */,
@@ -500,11 +514,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A516CE122D8392A002C4F89 /* ServiceError.swift in Sources */,
+				9AFABD8922DFF961005F6539 /* CustomImageView.swift in Sources */,
 				9A516CE322D843BD002C4F89 /* Constants.swift in Sources */,
 				9A516CDB22D835F8002C4F89 /* ProjectsViewModel.swift in Sources */,
 				9A516CDC22D835FE002C4F89 /* PersonalData.swift in Sources */,
 				9A516CCF22D835B0002C4F89 /* ProjectsViewController.swift in Sources */,
 				9A516CD622D835E4002C4F89 /* ProjectsViewCell.swift in Sources */,
+				9AFABD8C22DFF961005F6539 /* CustomView.swift in Sources */,
 				9A516CE022D83928002C4F89 /* ServiceManager.swift in Sources */,
 				9A516CCD22D835AB002C4F89 /* MainViewController.swift in Sources */,
 				9A516CD422D835DC002C4F89 /* LoadingView.swift in Sources */,
