@@ -1,0 +1,17 @@
+"please_wait" = "Please Wait";
+"my_cv" = "My CV";
+"error_request" = "An error occurred in the service request.";
+"exceed_error_service" = "Service request time has been exceeded.";
+"error_serializing" = "Error serializing json object.";
+"to" = "To";
+"position" = "Position";
+"functions" = "Functions";
+
+"email" = "E-Mail:";
+"projects" = "Projects";
+"phone" = "Phone:";
+"description" = "Description:";
+"show_professional_experience" = "Show Professional Experience";
+"contact" = "Contact:";
+"professional_experience" = "Professional Experience";
+"tap_message" = "Tap to see the projects carried out";

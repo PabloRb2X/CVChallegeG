@@ -1,0 +1,13 @@
+//
+//  URL.xcconfig
+//  CVChallenge
+//
+//  Created by Pablo Ramirez on 7/19/19.
+//  Copyright © 2019 Pablo Ramirez. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_URL = https:/$()/gist.githubusercontent.com/PabloRb2X/58eabff8ec5d7eb766f58d473ff12a7b/raw
+GLOBAL_CONSTANTS = API_URL="$(API_URL)"

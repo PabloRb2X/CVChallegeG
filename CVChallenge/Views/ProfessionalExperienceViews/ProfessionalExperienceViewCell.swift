@@ -25,9 +25,9 @@ class ProfessionalExperienceViewCell: UICollectionViewCell {
             backgroundImageView?.downloadImage(from: job?.backgroundImage ?? "")
             companyImageView?.downloadImage(from: job?.companyImage ?? "")
             nameCompanyLabel?.text = job?.companyName
-            periodLabel?.text = "\(NSLocalizedString("To", comment: "")): \(String(describing: job?.admissionDate ?? "")) - \(String(describing: job?.termDate ?? ""))."
-            jobLabel?.text = "\(NSLocalizedString("Position", comment: "")): \(String(describing: job?.position ?? ""))"
-            descriptionLabel?.text = "\(NSLocalizedString("Functions", comment: "")): \(String(describing: job?.summary ?? ""))"
+            periodLabel?.text = "\(NSLocalizedString("to", comment: "")): \(String(describing: job?.admissionDate ?? "")) - \(String(describing: job?.termDate ?? ""))."
+            jobLabel?.text = "\(NSLocalizedString("position", comment: "")): \(String(describing: job?.position ?? ""))"
+            descriptionLabel?.text = "\(NSLocalizedString("functions", comment: "")): \(String(describing: job?.summary ?? ""))"
         }
     }
     

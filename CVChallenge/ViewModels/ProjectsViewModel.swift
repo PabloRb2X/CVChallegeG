@@ -13,16 +13,11 @@ protocol ProjectsViewModelProtocol: class {
     var projects: [Project]? { get }
     var projectsDidChange: ((ProjectsViewModelProtocol) -> ())? { get set }
     init(projects: [Project])
-    
 }
 
 class ProjectsViewModel: ProjectsViewModelProtocol {
     
-    var projects: [Project]?{
-        didSet{
-            //self.projectsDidChange?(self)
-        }
-    }
+    var projects: [Project]?
     var projectsDidChange: ((ProjectsViewModelProtocol) -> ())?
     
     required init(projects: [Project]) {

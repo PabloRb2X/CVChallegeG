@@ -1,0 +1,17 @@
+"please_wait" = "Por favor espere";
+"my_cv" = "Mi CV";
+"error_request" = "Ocurrió un error en la petición del servicio.";
+"exceed_error_service" = "Se ha excedido el tiempo en la petición del servicio.";
+"error_serializing" = "Error en la serialización del JSON.";
+"to" = "De";
+"position" = "Puesto";
+"functions" = "Funciones";
+
+"email" = "Correo:";
+"projects" = "Proyectos";
+"phone" = "Teléfono:";
+"description" = "Descripción:";
+"show_professional_experience" = "Ver experiencia profesional";
+"contact" = "Contacto:";
+"professional_experience" = "Experiencia Profesional";
+"tap_message" = "Da tap para ver los proyectos realizados";

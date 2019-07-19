@@ -35,8 +35,8 @@ class MainViewController: UIViewController {
                     self.photoImageView?.downloadImage(from: viewModel.personalData?.image ?? "")
                     self.fullNameLabel?.text = "\(String(describing: viewModel.personalData?.name ?? "")) \(String(describing: viewModel.personalData?.lastName ?? ""))"
                     self.profileLabel?.text = viewModel.personalData?.profile ?? ""
-                    self.schoolLabel?.text = viewModel.personalData?.education.schoolName ?? ""
-                    self.cityLabel?.text = viewModel.personalData?.direction.city ?? ""
+                    self.schoolLabel?.text = viewModel.personalData?.schoolName ?? ""
+                    self.cityLabel?.text = viewModel.personalData?.city ?? ""
                     self.textDescriptionLabel?.text = self.viewModel.personalData?.description ?? ""
                     self.textPhoneLabel?.text = String(viewModel.personalData?.telephone ?? 0)
                     self.textEmailLabel?.text = viewModel.personalData?.email ?? ""
@@ -46,27 +46,28 @@ class MainViewController: UIViewController {
                 self.dismissLoadingView()
                 self.showErrorAlert(errorMessage: viewModel.errorMessage ?? "", reference: self)
             }
+            self.viewModel.showJobs = { [unowned self] viewModel in
+                self.performSegue(withIdentifier: "profExperienceSegue", sender: nil)
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = NSLocalizedString("My CV", comment: "")
-        
+    
         self.showLoadingView()
         viewModel.getPersonalData()
     }
     
     @IBAction func showProfessionalProfileEvent(_ sender: UIButton) {
         
-        self.performSegue(withIdentifier: "profExperienceSegue", sender: nil)
+        viewModel.setJobs()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? ProfessionalExperienceViewController{
             
-            viewController.viewModel = ProfessionalExperienceViewModel()
+            viewController.viewModel = ProfessionalExperienceViewModel(jobs: viewModel.jobs ?? [Job]())
         }
     }
 }

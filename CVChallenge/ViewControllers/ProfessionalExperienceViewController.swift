@@ -14,25 +14,9 @@ class ProfessionalExperienceViewController: UIViewController {
     
     var viewModel: ProfessionalExperienceViewModelProtocol! {
         didSet{
-            self.viewModel.jobsDidChange = { [unowned self] viewModel in
-                
-                self.dismissLoadingView()
-                DispatchQueue.main.async {
-                    self.profExpCollectionView?.reloadData()
-                }
-            }
-            self.viewModel.dataError = { [unowned self] viewModel in
-                
-                self.dismissLoadingView()
-                self.showErrorAlert(errorMessage: viewModel.errorMessage ?? "", reference: self)
-            }
             self.viewModel.showProjects = { [unowned self] viewModel in
                 
                 self.performSegue(withIdentifier: "projectsSegue", sender: nil)
-            }
-            self.viewModel.showLoading = { [unowned self] viewModel in
-                
-                self.showLoadingView()
             }
         }
     }
@@ -42,11 +26,6 @@ class ProfessionalExperienceViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         profExpCollectionView?.register(UINib(nibName: "ProfessionalExperienceViewCell", bundle: nil), forCellWithReuseIdentifier: "profExpCell")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        viewModel.getProfessionalExperience()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

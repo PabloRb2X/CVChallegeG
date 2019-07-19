@@ -31,7 +31,6 @@ class LoadingView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         loadingView.layer.cornerRadius = 10
-        textAlert.text = NSLocalizedString("Please Wait", comment: "")
     }
     
 }

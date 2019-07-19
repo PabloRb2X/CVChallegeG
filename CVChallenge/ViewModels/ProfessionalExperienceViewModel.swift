@@ -11,35 +11,17 @@ import Foundation
 protocol ProfessionalExperienceViewModelProtocol: class {
     
     var jobs: [Job]? { get }
-    var errorMessage: String? { get }
     var projects: [Project]? { get }
-    var jobsDidChange: ((ProfessionalExperienceViewModelProtocol) -> ())? { get set }
-    var dataError: ((ProfessionalExperienceViewModelProtocol) -> ())? { get set }
     var showProjects: ((ProfessionalExperienceViewModelProtocol) -> ())? { get set }
     
-    var showLoading: ((ProfessionalExperienceViewModelProtocol) -> ())? { get set }
+    init(jobs: [Job])
     
-    init()
-    
-    func getProfessionalExperience()
     func setProjects(index: Int)
 }
 
 class ProfessionalExperienceViewModel: ProfessionalExperienceViewModelProtocol {
     
-    var jobs: [Job]?{
-        didSet{
-            self.jobsDidChange?(self)
-        }
-    }
-    var jobsDidChange: ((ProfessionalExperienceViewModelProtocol) -> ())?
-    
-    var errorMessage: String?{
-        didSet{
-            self.dataError?(self)
-        }
-    }
-    var dataError: ((ProfessionalExperienceViewModelProtocol) -> ())?
+    var jobs: [Job]?
     
     var projects: [Project]?{
         didSet{
@@ -48,28 +30,8 @@ class ProfessionalExperienceViewModel: ProfessionalExperienceViewModelProtocol {
     }
     var showProjects: ((ProfessionalExperienceViewModelProtocol) -> ())?
     
-    var showLoading: ((ProfessionalExperienceViewModelProtocol) -> ())?
-    
-    required init(){ }
-    
-    func getProfessionalExperience() {
-        if jobs?.count == nil{
-            self.showLoading?(self)
-            
-            let serviceManager: ServiceManager = ServiceManager()
-            
-            serviceManager.performProfessionalExperienceService()
-            serviceManager.onSuccessProfessionalExperienceService = {[weak self](_ response: [Job]) -> Void in
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self?.jobs = response
-                }
-            }
-            serviceManager.onServiceError = {[weak self] (_ message: String) -> Void in
-                
-                self?.errorMessage = message
-            }
-        }
+    required init(jobs: [Job]){
+        self.jobs = jobs
     }
     
     func setProjects(index: Int){

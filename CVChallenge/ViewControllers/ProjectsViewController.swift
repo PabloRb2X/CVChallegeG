@@ -12,17 +12,7 @@ class ProjectsViewController: UIViewController {
     
     @IBOutlet weak var projectsCollectionView: UICollectionView?
     
-    var viewModel: ProjectsViewModelProtocol! {
-        didSet{
-            self.viewModel.projectsDidChange = { [unowned self] viewModel in
-                self.dismissLoadingView()
-                
-                DispatchQueue.main.async {
-                    self.projectsCollectionView?.reloadData()
-                }
-            }
-        }
-    }
+    var viewModel: ProjectsViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +20,6 @@ class ProjectsViewController: UIViewController {
         // Do any additional setup after loading the view.
         projectsCollectionView?.register(UINib(nibName: "ProjectsViewCell", bundle: nil), forCellWithReuseIdentifier: "projectCell")
     }
-    
     
     @IBAction func backEvent(_ sender: UIBarButtonItem) {
         
@@ -42,7 +31,7 @@ class ProjectsViewController: UIViewController {
 extension ProjectsViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return viewModel.projects?.count ?? 0
+        return viewModel?.projects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -51,7 +40,7 @@ extension ProjectsViewController: UICollectionViewDataSource{
             return UICollectionViewCell()
         }
         
-        cell.project = viewModel.projects?[indexPath.row]
+        cell.project = viewModel?.projects?[indexPath.row]
         
         return cell
     }
@@ -73,7 +62,7 @@ extension ProjectsViewController: UICollectionViewDelegateFlowLayout{
         
         var aproximatedHeight: CGFloat = 0.0
         
-        if let project = viewModel.projects?[indexPath.row]{
+        if let project = viewModel?.projects?[indexPath.row]{
             aproximatedHeight = getHeightCell(project: project)
         }
         

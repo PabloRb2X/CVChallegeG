@@ -48,10 +48,6 @@ extension UIViewController{
             if let mainViewController = reference as? MainViewController{
                 mainViewController.viewModel.getPersonalData()
             }
-            else if let profExpViewController = reference as? ProfessionalExperienceViewController{
-                profExpViewController.viewModel.getProfessionalExperience()
-            }
-            
         })
         
         alert.addAction(retryAction)
@@ -60,31 +56,45 @@ extension UIViewController{
 }
 
 extension UIImageView{
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    fileprivate func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func downloadImage(from stringURL: String) {
         self.image = nil
         
+        isImageInCache(stringURL: stringURL)
+    }
+    
+    fileprivate func isImageInCache(stringURL: String){
         if let cachedImage = imageCache.object(forKey: stringURL as NSString) as? UIImage {
             self.image = cachedImage
             return
         }
-        
+        else{
+            runDownloadService(stringURL: stringURL)
+        }
+    }
+    
+    fileprivate func runDownloadService(stringURL: String){
         if let url = URL(string: stringURL){
-            getData(from: url) { data, response, error in
+            getData(from: url) { [unowned self] data, response, error in
                 guard let data = data, error == nil else { return }
-                DispatchQueue.main.async() {
-                    if let image = UIImage(data: data) {
-                        imageCache.setObject(image, forKey: stringURL as NSString)
-                        self.image = image
-                    }
-                }
+                
+                self.setImage(stringURL: stringURL, data: data)
             }
         }
         else{
             self.backgroundColor = UIColor.lightGray
+        }
+    }
+    
+    fileprivate func setImage(stringURL: String, data: Data){
+        DispatchQueue.main.async() {
+            if let image = UIImage(data: data) {
+                imageCache.setObject(image, forKey: stringURL as NSString)
+                self.image = image
+            }
         }
     }
 }

@@ -13,31 +13,29 @@ public struct PersonalData: Decodable {
     let lastName: String
     let profile: String
     let age: Int
-    let civilStatus: String
     let description: String
-    let direction: Direction
-    let education: Education
+    let jobs: [Job]
+    let schoolName: String
+    let city: String
     let telephone: Int
     let email: String
     let image: String?
     let backgroundImage: String?
 }
 
-public struct Direction: Decodable {
-    let street: String
-    let outdoorNumber: Int
-    let interiorNumber: Int?
-    let suburb: String
-    let town: String
-    let city: String
-    let postalCode: Int
-    let country: String
+public struct Job: Decodable {
+    let id: Int
+    let companyName: String
+    let position: String
+    let admissionDate: String
+    let termDate: String
+    let summary: String
+    let projects: [Project]
+    let companyImage: String
+    let backgroundImage: String
 }
 
-public struct Education: Decodable {
-    let educationalLevel: String
-    let jobTitle: String
-    let schoolName: String
-    let period: String
-    let status: String
+public struct Project: Decodable {
+    let nameApp: String
+    let descriptionApp: String
 }
