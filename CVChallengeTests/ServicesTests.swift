@@ -28,19 +28,12 @@ class ServicesTests: XCTestCase {
             self.expectation.fulfill()
         }
         
-        serviceManager.performPersonalDataService()
+        //serviceManager.performPersonalDataService()
         waitForExpectations(timeout: 60, handler: nil)
     }
     
-    func testProfessionalExperienceService(){
-        serviceManager.onSuccessProfessionalExperienceService = {(_ response: [Job]) -> Void in
-            print(response)
-            XCTAssert(true, "Success")
-            self.expectation.fulfill()
-        }
-        
-        serviceManager.performProfessionalExperienceService()
-        waitForExpectations(timeout: 60, handler: nil)
+    func test_get_request_with_url(){
+        serviceManager.performService(urlString: "http://")
     }
     
     func errorCatalog() {

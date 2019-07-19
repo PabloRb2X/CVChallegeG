@@ -8,11 +8,17 @@
 
 import Foundation
 
-public class ServiceManager{
+protocol URLSessionProtocol {
+    func performService(urlString: String)
+    func setupSession(url: URL)
+    func runService(session: URLSession, urlRequest: URLRequest)
+}
+
+public class ServiceManager: URLSessionProtocol{
     public var onSuccessPersonalDataService:((_ response: PersonalData) -> ())?
     public var onServiceError:((_ message: String) -> ())?
     
-    public func performService(urlString: String){
+    func performService(urlString: String){
         
         guard let url = URL(string: urlString) else{ return }
         
