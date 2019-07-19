@@ -33,7 +33,6 @@ class ProfessionalExperienceViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         backgroundImageView?.translatesAutoresizingMaskIntoConstraints = false
         companyImageView?.translatesAutoresizingMaskIntoConstraints = false
@@ -47,57 +46,41 @@ class ProfessionalExperienceViewCell: UICollectionViewCell {
     }
     
     func initConstraints(){
-        let views: [String: Any?] = [
-            "backgroundImageView": backgroundImageView,
-            "companyImageView": companyImageView,
-            "nameCompanyLabel": nameCompanyLabel,
-            "periodLabel": periodLabel,
-            "jobLabel": jobLabel,
-            "descriptionLabel": descriptionLabel,
-            "showProjectsButton": showProjectsButton
-        ]
         
-        var allConstraints: [NSLayoutConstraint] = []
-        
-        /// backgroundImageView
-        allConstraints += getConstraint(visualFormat: "H:|[backgroundImageView]|", views: views)
-        allConstraints += getConstraint(visualFormat: "V:|[backgroundImageView(70)]", views: views)
-        
-        /// companyImageView
-        allConstraints += getConstraint(visualFormat: "H:|-16-[companyImageView(70)]", views: views)
-        allConstraints += getConstraint(visualFormat: "V:|-35-[companyImageView(70)]", views: views)
-        
-        /// nameCompanyLabel
-        allConstraints += getConstraint(visualFormat: "H:|-16-[nameCompanyLabel]-16-|", views: views)
-        allConstraints += getConstraint(visualFormat: "V:[companyImageView]-8-[nameCompanyLabel]", views: views)
-        
-        /// periodLabel
-        allConstraints += getConstraint(visualFormat: "H:|-16-[periodLabel]-16-|", views: views)
-        allConstraints += getConstraint(visualFormat: "V:[nameCompanyLabel]-8-[periodLabel]", views: views)
-        
-        /// jobLabel
-        allConstraints += getConstraint(visualFormat: "H:|-16-[jobLabel]-16-|", views: views)
-        allConstraints += getConstraint(visualFormat: "V:[periodLabel]-8-[jobLabel]", views: views)
-        
-        /// jobLabel
-        allConstraints += getConstraint(visualFormat: "H:|-16-[descriptionLabel]-16-|", views: views)
-        allConstraints += getConstraint(visualFormat: "V:[jobLabel]-8-[descriptionLabel]", views: views)
-        
-        /// showProjectsButton
-        allConstraints += getConstraint(visualFormat: "H:|-16-[showProjectsButton]-16-|", views: views)
-        allConstraints += getConstraint(visualFormat: "V:[showProjectsButton(30)]|", views: views)
-        
-        NSLayoutConstraint.activate(allConstraints)
+        if let containerView = containerView, let backgroundImageView = backgroundImageView, let companyImageView = companyImageView, let nameCompanyLabel = nameCompanyLabel, let periodLabel = periodLabel, let jobLabel = jobLabel, let descriptionLabel = descriptionLabel, let showProjectsButton = showProjectsButton{
+            
+            NSLayoutConstraint.activate([
+                backgroundImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
+                backgroundImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+                backgroundImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+                backgroundImageView.heightAnchor.constraint(equalToConstant: 70),
+                
+                companyImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 35),
+                companyImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+                companyImageView.widthAnchor.constraint(equalToConstant: 70),
+                companyImageView.heightAnchor.constraint(equalToConstant: 70),
+                
+                nameCompanyLabel.topAnchor.constraint(equalTo: companyImageView.bottomAnchor, constant: 8),
+                nameCompanyLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+                nameCompanyLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+                
+                periodLabel.topAnchor.constraint(equalTo: nameCompanyLabel.bottomAnchor, constant: 8),
+                periodLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+                periodLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+                
+                jobLabel.topAnchor.constraint(equalTo: periodLabel.bottomAnchor, constant: 8),
+                jobLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+                jobLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+                
+                descriptionLabel.topAnchor.constraint(equalTo: jobLabel.bottomAnchor, constant: 8),
+                descriptionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+                descriptionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+                
+                showProjectsButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+                showProjectsButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+                showProjectsButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0),
+                showProjectsButton.heightAnchor.constraint(equalToConstant: 30)
+            ])
+        }
     }
-    
-    func getConstraint(visualFormat: String, views: [String: Any?]) -> [NSLayoutConstraint]{
-        let constraint = NSLayoutConstraint.constraints(
-            withVisualFormat: visualFormat,
-            metrics: nil,
-            views: views as [String : Any])
-        
-        return constraint
-    }
-
-    
 }

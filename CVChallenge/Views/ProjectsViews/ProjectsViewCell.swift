@@ -24,7 +24,6 @@ class ProjectsViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         projectName?.translatesAutoresizingMaskIntoConstraints = false
         projectDescription?.translatesAutoresizingMaskIntoConstraints = false
@@ -33,30 +32,18 @@ class ProjectsViewCell: UICollectionViewCell {
     }
     
     func initConstraints(){
-        let views: [String: Any?] = [
-            "projectName": self.projectName,
-            "projectDescription": self.projectDescription
-        ]
-        
-        var allConstraints: [NSLayoutConstraint] = []
-        
-        /// projectName
-        allConstraints += getConstraint(visualFormat: "H:|-8-[projectName]-8-|", views: views)
-        allConstraints += getConstraint(visualFormat: "V:|-8-[projectName]", views: views)
-        
-        /// projectDescription
-        allConstraints += getConstraint(visualFormat: "H:|-8-[projectDescription]-8-|", views: views)
-        allConstraints += getConstraint(visualFormat: "V:[projectName]-8-[projectDescription]", views: views)
-        NSLayoutConstraint.activate(allConstraints)
+
+        if let containerView = containerView, let projectName = projectName, let projectDescription = projectDescription{
+            NSLayoutConstraint.activate([
+                projectName.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0),
+                projectName.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+                projectName.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+                
+                projectDescription.topAnchor.constraint(equalTo: projectName.bottomAnchor, constant: 0),
+                projectDescription.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+                projectDescription.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+                projectDescription.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 4)
+            ])
+        }
     }
-    
-    func getConstraint(visualFormat: String, views: [String: Any?]) -> [NSLayoutConstraint]{
-        let constraint = NSLayoutConstraint.constraints(
-            withVisualFormat: visualFormat,
-            metrics: nil,
-            views: views as [String : Any])
-        
-        return constraint
-    }
-    
 }

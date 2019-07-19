@@ -328,7 +328,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VKo-vk-iDq">
-                                <rect key="frame" x="8" y="72" width="304" height="496"/>
+                                <rect key="frame" x="8" y="72" width="304" height="488"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K7n-7J-sOJ">
                                     <size key="itemSize" width="395" height="265"/>
@@ -354,10 +354,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VKo-vk-iDq" firstAttribute="top" secondItem="7Tb-Kb-RsC" secondAttribute="top" constant="8" id="3kh-j3-zIo"/>
-                            <constraint firstItem="VKo-vk-iDq" firstAttribute="bottom" secondItem="7Tb-Kb-RsC" secondAttribute="bottom" id="Fia-fh-7l3"/>
-                            <constraint firstItem="7Tb-Kb-RsC" firstAttribute="trailing" secondItem="VKo-vk-iDq" secondAttribute="trailing" constant="8" id="gOD-9e-exH"/>
-                            <constraint firstItem="VKo-vk-iDq" firstAttribute="leading" secondItem="7Tb-Kb-RsC" secondAttribute="leading" constant="8" id="smZ-oa-YZd"/>
+                            <constraint firstItem="VKo-vk-iDq" firstAttribute="top" secondItem="7Tb-Kb-RsC" secondAttribute="top" constant="8" id="C4C-U6-eHo"/>
+                            <constraint firstItem="7Tb-Kb-RsC" firstAttribute="trailing" secondItem="VKo-vk-iDq" secondAttribute="trailing" constant="8" id="RdS-Mq-iXI"/>
+                            <constraint firstItem="7Tb-Kb-RsC" firstAttribute="bottom" secondItem="VKo-vk-iDq" secondAttribute="bottom" constant="8" id="n6I-QF-rmi"/>
+                            <constraint firstItem="VKo-vk-iDq" firstAttribute="leading" secondItem="7Tb-Kb-RsC" secondAttribute="leading" constant="8" id="w48-Et-VtW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Tb-Kb-RsC"/>
                     </view>
@@ -389,7 +389,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gld-18-Lz3">
-                                <rect key="frame" x="8" y="72" width="304" height="504"/>
+                                <rect key="frame" x="8" y="72" width="304" height="488"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zCX-Se-fmx">
                                     <size key="itemSize" width="394" height="196"/>
@@ -415,10 +415,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Gld-18-Lz3" firstAttribute="top" secondItem="dR8-jw-h9e" secondAttribute="top" constant="8" id="FP6-eW-QBL"/>
-                            <constraint firstItem="Gld-18-Lz3" firstAttribute="bottom" secondItem="dR8-jw-h9e" secondAttribute="bottom" constant="8" id="aaJ-OC-WgV"/>
-                            <constraint firstItem="dR8-jw-h9e" firstAttribute="trailing" secondItem="Gld-18-Lz3" secondAttribute="trailing" constant="8" id="dTa-C7-gRh"/>
-                            <constraint firstItem="Gld-18-Lz3" firstAttribute="leading" secondItem="dR8-jw-h9e" secondAttribute="leading" constant="8" id="uPa-2w-w4T"/>
+                            <constraint firstItem="Gld-18-Lz3" firstAttribute="top" secondItem="dR8-jw-h9e" secondAttribute="top" constant="8" id="4Pc-5p-Z04"/>
+                            <constraint firstItem="dR8-jw-h9e" firstAttribute="bottom" secondItem="Gld-18-Lz3" secondAttribute="bottom" constant="8" id="D3O-NI-Rav"/>
+                            <constraint firstItem="dR8-jw-h9e" firstAttribute="trailing" secondItem="Gld-18-Lz3" secondAttribute="trailing" constant="8" id="tCc-Fh-laR"/>
+                            <constraint firstItem="Gld-18-Lz3" firstAttribute="leading" secondItem="dR8-jw-h9e" secondAttribute="leading" constant="8" id="xa0-43-r2Q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dR8-jw-h9e"/>
                     </view>
