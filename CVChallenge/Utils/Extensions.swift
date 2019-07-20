@@ -46,7 +46,7 @@ extension UIViewController{
             
             reference.showLoadingView()
             if let mainViewController = reference as? MainViewController{
-                mainViewController.viewModel.getPersonalData()
+                mainViewController.mainPresenter?.getPersonalData()
             }
         })
         

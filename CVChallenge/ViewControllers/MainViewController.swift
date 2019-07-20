@@ -26,48 +26,60 @@ class MainViewController: UIViewController {
     @IBOutlet weak var textEmailLabel: UILabel?
     @IBOutlet weak var showProfExpButton: UIButton?
     
-    var viewModel: MainViewModelProtocol! {
-        didSet{
-            self.viewModel.dataDidChange = { [unowned self] viewModel in
-                self.dismissLoadingView()
-                DispatchQueue.main.async {
-                    self.backgroundImageView?.downloadImage(from: viewModel.personalData?.backgroundImage ?? "")
-                    self.photoImageView?.downloadImage(from: viewModel.personalData?.image ?? "")
-                    self.fullNameLabel?.text = "\(String(describing: viewModel.personalData?.name ?? "")) \(String(describing: viewModel.personalData?.lastName ?? ""))"
-                    self.profileLabel?.text = viewModel.personalData?.profile ?? ""
-                    self.schoolLabel?.text = viewModel.personalData?.schoolName ?? ""
-                    self.cityLabel?.text = viewModel.personalData?.city ?? ""
-                    self.textDescriptionLabel?.text = self.viewModel.personalData?.description ?? ""
-                    self.textPhoneLabel?.text = String(viewModel.personalData?.telephone ?? 0)
-                    self.textEmailLabel?.text = viewModel.personalData?.email ?? ""
-                }
-            }
-            self.viewModel.dataError = { [unowned self] viewModel in
-                self.dismissLoadingView()
-                self.showErrorAlert(errorMessage: viewModel.errorMessage ?? "", reference: self)
-            }
-            self.viewModel.showJobs = { [unowned self] viewModel in
-                self.performSegue(withIdentifier: "profExperienceSegue", sender: nil)
-            }
-        }
-    }
+    var mainPresenter: MainPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         self.showLoadingView()
-        viewModel.getPersonalData()
+        mainPresenter?.attachView(self)
+        mainPresenter?.getPersonalData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        mainPresenter?.detachView()
     }
     
     @IBAction func showProfessionalProfileEvent(_ sender: UIButton) {
         
-        viewModel.setJobs()
+        mainPresenter?.setJobs()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? ProfessionalExperienceViewController{
             
-            viewController.viewModel = ProfessionalExperienceViewModel(jobs: viewModel.jobs ?? [Job]())
+            viewController.professionalExperiencePresenter = ProfessionalExperiencePresenter(jobs: mainPresenter?.getJobs() ?? [Job]())
         }
     }
+}
+
+extension MainViewController: MainView{
+    func setupView(personalData: PersonalData?) {
+        self.dismissLoadingView()
+        
+        DispatchQueue.main.async {
+            self.backgroundImageView?.downloadImage(from: personalData?.backgroundImage ?? "")
+            self.photoImageView?.downloadImage(from: personalData?.image ?? "")
+            self.fullNameLabel?.text = "\(String(describing: personalData?.name ?? "")) \(String(describing: personalData?.lastName ?? ""))"
+            self.profileLabel?.text = personalData?.profile
+            self.schoolLabel?.text = personalData?.schoolName
+            self.cityLabel?.text = personalData?.city
+            self.textDescriptionLabel?.text = personalData?.description
+            self.textPhoneLabel?.text = String(personalData?.telephone ?? 0)
+            self.textEmailLabel?.text = personalData?.email
+        }
+    }
+    
+    func showErrorMessage(message: String) {
+        
+        self.dismissLoadingView()
+        self.showErrorAlert(errorMessage: message, reference: self)
+    }
+    
+    func showProfessionalExperience(){
+        
+        self.performSegue(withIdentifier: "profExperienceSegue", sender: nil)
+    }
+    
 }

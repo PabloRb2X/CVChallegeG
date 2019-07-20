@@ -12,13 +12,21 @@ class ProjectsViewController: UIViewController {
     
     @IBOutlet weak var projectsCollectionView: UICollectionView?
     
-    var viewModel: ProjectsViewModelProtocol?
+    var projectsPresenter: ProjectsPresenter?
+    fileprivate var projects: [Project]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
         projectsCollectionView?.register(UINib(nibName: "ProjectsViewCell", bundle: nil), forCellWithReuseIdentifier: "projectCell")
+        
+        projectsPresenter?.attachView(self)
+        projectsPresenter?.getProjects()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        projectsPresenter?.detachView()
     }
     
     @IBAction func backEvent(_ sender: UIBarButtonItem) {
@@ -28,10 +36,18 @@ class ProjectsViewController: UIViewController {
     
 }
 
+extension ProjectsViewController: ProjectsView{
+    func setProjects(projects: [Project]) {
+        
+        self.projects = projects
+        projectsCollectionView?.reloadData()
+    }
+}
+
 extension ProjectsViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return viewModel?.projects?.count ?? 0
+        return projects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -40,7 +56,7 @@ extension ProjectsViewController: UICollectionViewDataSource{
             return UICollectionViewCell()
         }
         
-        cell.project = viewModel?.projects?[indexPath.row]
+        cell.project = projects?[indexPath.row]
         
         return cell
     }
@@ -62,7 +78,7 @@ extension ProjectsViewController: UICollectionViewDelegateFlowLayout{
         
         var aproximatedHeight: CGFloat = 0.0
         
-        if let project = viewModel?.projects?[indexPath.row]{
+        if let project = projects?[indexPath.row]{
             aproximatedHeight = getHeightCell(project: project)
         }
         

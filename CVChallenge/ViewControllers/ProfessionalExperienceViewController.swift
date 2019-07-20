@@ -12,26 +12,27 @@ class ProfessionalExperienceViewController: UIViewController {
     
     @IBOutlet weak var profExpCollectionView: UICollectionView?
     
-    var viewModel: ProfessionalExperienceViewModelProtocol! {
-        didSet{
-            self.viewModel.showProjects = { [unowned self] viewModel in
-                
-                self.performSegue(withIdentifier: "projectsSegue", sender: nil)
-            }
-        }
-    }
+    var professionalExperiencePresenter: ProfessionalExperiencePresenter?
+    fileprivate var jobs: [Job]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         profExpCollectionView?.register(UINib(nibName: "ProfessionalExperienceViewCell", bundle: nil), forCellWithReuseIdentifier: "profExpCell")
+        
+        professionalExperiencePresenter?.attachView(self)
+        professionalExperiencePresenter?.getJobs()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        professionalExperiencePresenter?.detachView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? ProjectsViewController{
             
-            viewController.viewModel = ProjectsViewModel(projects: viewModel.projects ?? [Project]())
+            viewController.projectsPresenter = ProjectsPresenter(projects: professionalExperiencePresenter?.getProjects() ?? [Project]())
         }
     }
     
@@ -41,17 +42,31 @@ class ProfessionalExperienceViewController: UIViewController {
     }
 }
 
+extension ProfessionalExperienceViewController: ProfessionalExperienceView{
+    
+    func setJobs(jobs: [Job]) {
+        
+        self.jobs = jobs
+        profExpCollectionView?.reloadData()
+    }
+    
+    func goToProjects(){
+        
+        self.performSegue(withIdentifier: "projectsSegue", sender: nil)
+    }
+}
+
 extension ProfessionalExperienceViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        viewModel.setProjects(index: indexPath.row)
+        professionalExperiencePresenter?.setProjects(index: indexPath.row)
     }
 }
 
 extension ProfessionalExperienceViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return viewModel.jobs?.count ?? 0
+        return jobs?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,7 +75,7 @@ extension ProfessionalExperienceViewController: UICollectionViewDataSource{
             return UICollectionViewCell()
         }
         
-        cell.job = viewModel.jobs?[indexPath.row]
+        cell.job = jobs?[indexPath.row]
         return cell
     }
 }
@@ -82,7 +97,7 @@ extension ProfessionalExperienceViewController: UICollectionViewDelegateFlowLayo
         
         var aproximatedHeight: CGFloat = 0.0
         
-        if let job = viewModel.jobs?[indexPath.row]{
+        if let job = jobs?[indexPath.row]{
             aproximatedHeight = getHeightCell(job: job)
         }
         

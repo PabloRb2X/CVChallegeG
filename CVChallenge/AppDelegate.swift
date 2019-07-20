@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController{
             if let rootViewController = storyboard.instantiateViewController(withIdentifier: "mainViewC") as? MainViewController{
-                rootViewController.viewModel = MainViewModel()
+                rootViewController.mainPresenter = MainPresenter()
                 navigationController.viewControllers = [rootViewController]
                 
                 self.window?.rootViewController = navigationController
