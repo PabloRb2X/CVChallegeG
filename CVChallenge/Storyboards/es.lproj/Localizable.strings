@@ -1,11 +1,13 @@
 "please_wait" = "Por favor espere";
 "my_cv" = "Mi CV";
+"error_http" = "Ocurrió un error al procesar la solicitud.";
 "error_request" = "Ocurrió un error en la petición del servicio.";
 "exceed_error_service" = "Se ha excedido el tiempo en la petición del servicio.";
 "error_serializing" = "Error en la serialización del JSON.";
 "to" = "De";
 "position" = "Puesto";
 "functions" = "Funciones";
+"retry" = "Reintentar";
 
 "email" = "Correo:";
 "projects" = "Proyectos";

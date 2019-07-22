@@ -42,7 +42,7 @@ extension UIViewController{
     public func showErrorAlert<T: UIViewController>(errorMessage: String, reference: T){
         let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
         
-        let retryAction = UIAlertAction(title: "Reintentar", style: .default, handler: { (action:UIAlertAction) -> Void in
+        let retryAction = UIAlertAction(title: NSLocalizedString("retry", comment: ""), style: .default, handler: { (action:UIAlertAction) -> Void in
             
             reference.showLoadingView()
             if let mainViewController = reference as? MainViewController{

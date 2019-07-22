@@ -8,12 +8,29 @@
 
 import Foundation
 
-enum ConstantsService: String {
-    case personalDataURL = "https://gist.githubusercontent.com/PabloRb2X/fd2649950708f4be071497acefdc0b3f/raw"
-    case professionalExperienceURL = "https://gist.githubusercontent.com/PabloRb2X/bb50f64ba45352368a18c3cd8dd548f6/raw"
+enum Constants: String {
+    case urlId = "API_URL"
 }
 
-enum ConstantsServiceID: Int {
-    case personalData = 0
-    case professionalExperience = 1
+enum ApiError: String {
+    case genericError
+    case httpError
+    case exceedError
+    case serializingError
+    case defaultValue
+    
+    func getTextError() -> String {
+        switch self {
+        case .genericError:
+            return "\(NSLocalizedString("error_request", comment: ""))"
+        case .httpError:
+            return "\(NSLocalizedString("error_http", comment: ""))"
+        case .exceedError:
+            return "\(NSLocalizedString("exceed_error_service", comment: ""))"
+        case .serializingError:
+            return "\(NSLocalizedString("error_serializing", comment: ""))"
+        default:
+            return ""
+        }
+    }
 }

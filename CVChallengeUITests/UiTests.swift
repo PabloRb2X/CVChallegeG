@@ -18,7 +18,6 @@ class UiTests: XCTestCase {
 
     func testPrincipalFlow() {
         
-        
         let app = XCUIApplication()
         app.scrollViews.otherElements.buttons["Show professional Experience"].tap()
         app.collectionViews.children(matching: .cell).element(boundBy: 0).staticTexts["Cargo: Programador"].tap()

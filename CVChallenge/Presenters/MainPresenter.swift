@@ -33,21 +33,25 @@ class MainPresenter{
     }
     
     func getPersonalData(){
-        let serviceManager: ServiceManager = ServiceManager()
+
+        let apiClient = ApiClient()
         
-        if let apiURL = Bundle.main.infoDictionary?["API_URL"] as? String{
-            serviceManager.onSuccessPersonalDataService = {[weak self](_ response: PersonalData) -> Void in
+        apiClient.personalDataService(urlString: Constants.urlId.rawValue) { [weak self] (response, error) in
+            
+            guard let response = response else{
+                if let error = error{
+                    
+                    self?.mainView?.showErrorMessage(message: error.getTextError())
+                }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self?.personalData = response
-                    self?.mainView?.setupView(personalData: self?.personalData)
-                })
+                return
             }
-            serviceManager.onServiceError = {[weak self] (_ message: String) -> Void in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 
-                self?.mainView?.showErrorMessage(message: message)
-            }
-            serviceManager.performService(urlString: apiURL)
+                self?.personalData = response
+                self?.mainView?.setupView(personalData: self?.personalData)
+            })
         }
     }
     
