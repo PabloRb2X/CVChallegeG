@@ -20,6 +20,10 @@
 		9A237A1422E6298500C20CAB /* MockApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A237A1322E6298500C20CAB /* MockApiClient.swift */; };
 		9A237A1522E6298500C20CAB /* MockApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A237A1322E6298500C20CAB /* MockApiClient.swift */; };
 		9A237A1622E6298500C20CAB /* MockApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A237A1322E6298500C20CAB /* MockApiClient.swift */; };
+		9A237A1C22E7854200C20CAB /* UITestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A237A1B22E7854200C20CAB /* UITestExtensions.swift */; };
+		9A237A1E22E78A1800C20CAB /* AccesibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A237A1D22E78A1800C20CAB /* AccesibilityIdentifiers.swift */; };
+		9A237A1F22E78A1800C20CAB /* AccesibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A237A1D22E78A1800C20CAB /* AccesibilityIdentifiers.swift */; };
+		9A237A2022E78A1800C20CAB /* AccesibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A237A1D22E78A1800C20CAB /* AccesibilityIdentifiers.swift */; };
 		9A516CB322D6E72E002C4F89 /* ProjectsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A516CB122D6E72D002C4F89 /* ProjectsViewCell.swift */; };
 		9A516CB422D6E72E002C4F89 /* ProjectsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A516CB122D6E72D002C4F89 /* ProjectsViewCell.swift */; };
 		9A516CB522D6E72E002C4F89 /* ProjectsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A516CB222D6E72D002C4F89 /* ProjectsViewCell.xib */; };
@@ -114,6 +118,8 @@
 		9A237A0E22E259CF00C20CAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A237A0F22E61E8A00C20CAB /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		9A237A1322E6298500C20CAB /* MockApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApiClient.swift; sourceTree = "<group>"; };
+		9A237A1B22E7854200C20CAB /* UITestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestExtensions.swift; sourceTree = "<group>"; };
+		9A237A1D22E78A1800C20CAB /* AccesibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccesibilityIdentifiers.swift; sourceTree = "<group>"; };
 		9A516CB122D6E72D002C4F89 /* ProjectsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewCell.swift; sourceTree = "<group>"; };
 		9A516CB222D6E72D002C4F89 /* ProjectsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsViewCell.xib; sourceTree = "<group>"; };
 		9A516CB722D6E736002C4F89 /* ProfessionalExperienceViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessionalExperienceViewCell.swift; sourceTree = "<group>"; };
@@ -243,6 +249,7 @@
 			children = (
 				9A7CB84922D58E2F0084DCB6 /* Info.plist */,
 				9A516CDE22D837B0002C4F89 /* UiTests.swift */,
+				9A237A1B22E7854200C20CAB /* UITestExtensions.swift */,
 			);
 			path = CVChallengeUITests;
 			sourceTree = "<group>";
@@ -283,6 +290,7 @@
 				9AFABD8622DFF961005F6539 /* CustomView.swift */,
 				9A7CB87722D58FCF0084DCB6 /* Extensions.swift */,
 				9A7CB87422D58FC20084DCB6 /* Constants.swift */,
+				9A237A1D22E78A1800C20CAB /* AccesibilityIdentifiers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -472,6 +480,7 @@
 				9A516CBE22D6E7B7002C4F89 /* ProjectsViewController.swift in Sources */,
 				9AFABD8722DFF961005F6539 /* CustomImageView.swift in Sources */,
 				9A7CB87522D58FC20084DCB6 /* Constants.swift in Sources */,
+				9A237A1E22E78A1800C20CAB /* AccesibilityIdentifiers.swift in Sources */,
 				9AFABD9322E2D199005F6539 /* ProjectsPresenter.swift in Sources */,
 				9A7CB86922D58F5D0084DCB6 /* ProfessionalExperienceViewController.swift in Sources */,
 				9AFABD9722E3B09A005F6539 /* ProfessionalExperiencePresenter.swift in Sources */,
@@ -500,6 +509,7 @@
 				9A516CBF22D6E7B7002C4F89 /* ProjectsViewController.swift in Sources */,
 				9AFABD8822DFF961005F6539 /* CustomImageView.swift in Sources */,
 				9A7CB86D22D58F6F0084DCB6 /* MainViewController.swift in Sources */,
+				9A237A1F22E78A1800C20CAB /* AccesibilityIdentifiers.swift in Sources */,
 				9A7CB85D22D58F020084DCB6 /* PersonalData.swift in Sources */,
 				9A7CB87922D58FCF0084DCB6 /* Extensions.swift in Sources */,
 				9AFABD8B22DFF961005F6539 /* CustomView.swift in Sources */,
@@ -523,8 +533,10 @@
 				9AFABD9922E3B09A005F6539 /* ProfessionalExperiencePresenter.swift in Sources */,
 				9A237A1222E61E8A00C20CAB /* ApiClient.swift in Sources */,
 				9AFABD8922DFF961005F6539 /* CustomImageView.swift in Sources */,
+				9A237A2022E78A1800C20CAB /* AccesibilityIdentifiers.swift in Sources */,
 				9A516CE322D843BD002C4F89 /* Constants.swift in Sources */,
 				9A516CDC22D835FE002C4F89 /* PersonalData.swift in Sources */,
+				9A237A1C22E7854200C20CAB /* UITestExtensions.swift in Sources */,
 				9A516CCF22D835B0002C4F89 /* ProjectsViewController.swift in Sources */,
 				9A516CD622D835E4002C4F89 /* ProjectsViewCell.swift in Sources */,
 				9AFABD8C22DFF961005F6539 /* CustomView.swift in Sources */,

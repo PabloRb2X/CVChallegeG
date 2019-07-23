@@ -36,11 +36,6 @@ class MainViewController: UIViewController {
         mainPresenter?.getPersonalData()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        
-        mainPresenter?.detachView()
-    }
-    
     @IBAction func showProfessionalProfileEvent(_ sender: UIButton) {
         
         mainPresenter?.setJobs()

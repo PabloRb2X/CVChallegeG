@@ -28,10 +28,6 @@ class MainPresenter{
         mainView = view
     }
     
-    func detachView(){
-        mainView = nil
-    }
-    
     func getPersonalData(){
 
         let apiClient = ApiClient()

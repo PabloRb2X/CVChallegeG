@@ -10,6 +10,7 @@ import Foundation
 
 protocol ProfessionalExperienceView: class {
     
+    func initView()
     func setJobs(jobs: [Job])
     func goToProjects()
 }
@@ -29,8 +30,8 @@ class ProfessionalExperiencePresenter{
         professionalExperienceView = view
     }
     
-    func detachView(){
-        professionalExperienceView = nil
+    func initView(){
+        professionalExperienceView?.initView()
     }
     
     func getJobs(){

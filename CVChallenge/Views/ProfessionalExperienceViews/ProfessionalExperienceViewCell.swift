@@ -34,6 +34,9 @@ class ProfessionalExperienceViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+//        self.isAccessibilityElement = true
+//        self.accessibilityIdentifier = "profExpCell"
+        
         backgroundImageView?.translatesAutoresizingMaskIntoConstraints = false
         companyImageView?.translatesAutoresizingMaskIntoConstraints = false
         nameCompanyLabel?.translatesAutoresizingMaskIntoConstraints = false

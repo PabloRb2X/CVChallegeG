@@ -10,6 +10,7 @@ import UIKit
 
 class ProjectsViewController: UIViewController {
     
+    @IBOutlet weak var backBarButton: UIBarButtonItem?
     @IBOutlet weak var projectsCollectionView: UICollectionView?
     
     var projectsPresenter: ProjectsPresenter?
@@ -24,11 +25,6 @@ class ProjectsViewController: UIViewController {
         projectsPresenter?.getProjects()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        
-        projectsPresenter?.detachView()
-    }
-    
     @IBAction func backEvent(_ sender: UIBarButtonItem) {
         
         navigationController?.popViewController(animated: true)
@@ -37,6 +33,13 @@ class ProjectsViewController: UIViewController {
 }
 
 extension ProjectsViewController: ProjectsView{
+    
+    func initView() {
+        
+//        projectsCollectionView?.isAccessibilityElement = true
+//        projectsCollectionView?.accessibilityIdentifier = "projectCollectionV"
+    }
+    
     func setProjects(projects: [Project]) {
         
         self.projects = projects

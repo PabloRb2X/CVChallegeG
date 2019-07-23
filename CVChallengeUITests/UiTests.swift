@@ -16,36 +16,43 @@ class UiTests: XCTestCase {
         XCUIApplication().launch()
     }
 
-    func testPrincipalFlow() {
+    func test_navigation_app() {
         
         let app = XCUIApplication()
-        app.scrollViews.otherElements.buttons["Show professional Experience"].tap()
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).staticTexts["Cargo: Programador"].tap()
-        app.navigationBars["Projects"].children(matching: .button).element.tap()
-        app.navigationBars["Professional Experience"].buttons["Item"].tap()
-
+        
+        app.scrollViews.otherElements.buttons["showProfExpButton"].tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).staticTexts["Puesto: Programmer"].tap()
+        app.navigationBars["Proyectos"].children(matching: .button).element.tap()
+        app.navigationBars["Experiencia Profesional"].children(matching: .button).element.tap()
+        
     }
     
-    func testPrincipalFlowSelectCells(){
+    func test_show_projects_view(){
         
         let app = XCUIApplication()
-        app.scrollViews.otherElements.buttons["Ver experiencia profesional"].tap()
+        app.scrollViews.otherElements.buttons["showProfExpButton"].tap()
         
-        let collectionViewsQuery = app.collectionViews
-        collectionViewsQuery.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
+        let profexpcollectionvCollectionView2 = app.collectionViews["profExpCollectionV"]
+        let profexpcollectionvCollectionView = profexpcollectionvCollectionView2
+        profexpcollectionvCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Anzen Digital"]/*[[".cells.matching(identifier: \"profExpCell\").staticTexts[\"Anzen Digital\"]",".staticTexts[\"Anzen Digital\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        let collectionViewsQuery2 = collectionViewsQuery
-        collectionViewsQuery2/*@START_MENU_TOKEN@*/.staticTexts["Platform videogame (runner type) for iOS devices. It was created with the Cocos-2d library using the Objective-C language."]/*[[".cells.staticTexts[\"Platform videogame (runner type) for iOS devices. It was created with the Cocos-2d library using the Objective-C language.\"]",".staticTexts[\"Platform videogame (runner type) for iOS devices. It was created with the Cocos-2d library using the Objective-C language.\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let projectbackbarbButton = app.navigationBars["Projects"].buttons["projectBackBarB"]
+        projectbackbarbButton.tap()
+        profexpcollectionvCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Global HITSS"]/*[[".cells.matching(identifier: \"profExpCell\").staticTexts[\"Global HITSS\"]",".staticTexts[\"Global HITSS\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        projectbackbarbButton.tap()
+        profexpcollectionvCollectionView2.children(matching: .cell).matching(identifier: "profExpCell").element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.tap()
+        projectbackbarbButton.tap()
+        app.navigationBars["Professional Experience"].buttons["profExpBackBarB"].tap()
         
-        let button = app.navigationBars["Proyectos"].children(matching: .button).element
-        button.tap()
-        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.tap()
-        button.tap()
-        collectionViewsQuery.children(matching: .cell).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.tap()
-        collectionViewsQuery2/*@START_MENU_TOKEN@*/.staticTexts["Application for consultation and procedures on the Afores of the employees of Mexico. Swift was used for its development."]/*[[".cells.staticTexts[\"Application for consultation and procedures on the Afores of the employees of Mexico. Swift was used for its development.\"]",".staticTexts[\"Application for consultation and procedures on the Afores of the employees of Mexico. Swift was used for its development.\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        button.tap()
-        app.navigationBars["Experiencia Profesional"].buttons["Item"].tap()
+        XCTAssert(true, "complete")
+    }
     
+    func test_scrolling_elements(){
+        
+        
+        
     }
 
 }
+
+

@@ -10,6 +10,7 @@ import UIKit
 
 class ProfessionalExperienceViewController: UIViewController {
     
+    @IBOutlet weak var backBarButton: UIBarButtonItem!
     @IBOutlet weak var profExpCollectionView: UICollectionView?
     
     var professionalExperiencePresenter: ProfessionalExperiencePresenter?
@@ -21,12 +22,8 @@ class ProfessionalExperienceViewController: UIViewController {
         profExpCollectionView?.register(UINib(nibName: "ProfessionalExperienceViewCell", bundle: nil), forCellWithReuseIdentifier: "profExpCell")
         
         professionalExperiencePresenter?.attachView(self)
+        professionalExperiencePresenter?.initView()
         professionalExperiencePresenter?.getJobs()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
-        professionalExperiencePresenter?.detachView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,6 +40,12 @@ class ProfessionalExperienceViewController: UIViewController {
 }
 
 extension ProfessionalExperienceViewController: ProfessionalExperienceView{
+    
+    func initView() {
+        
+//        profExpCollectionView?.isAccessibilityElement = true
+//        profExpCollectionView?.accessibilityIdentifier = "profExpCollectionV"
+    }
     
     func setJobs(jobs: [Job]) {
         

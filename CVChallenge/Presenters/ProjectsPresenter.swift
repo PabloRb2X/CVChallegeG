@@ -9,6 +9,7 @@
 import Foundation
 
 protocol ProjectsView: class {
+    func initView()
     func setProjects(projects: [Project])
 }
 
@@ -25,8 +26,8 @@ class ProjectsPresenter{
         projectsView = view
     }
     
-    func detachView(){
-        projectsView = nil
+    func initView(){
+        projectsView?.initView()
     }
     
     func getProjects(){
