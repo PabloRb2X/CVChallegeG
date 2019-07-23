@@ -14,7 +14,8 @@ class ServicesTests: XCTestCase {
     
     override func setUp() {
         
-        super.setUp()    }
+        super.setUp()
+    }
 
     func test_get_personalData(){
         let expectation = self.expectation(description: "Personal Data Expectation")

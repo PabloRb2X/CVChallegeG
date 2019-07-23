@@ -1,8 +1,8 @@
 //
 //  LoadingView.swift
-//  RegistroAsistido
+//  CVChallenge
 //
-//  Created by Pablo Ramirez on 6/5/19.
+//  Created by Pablo Ramirez on 7/10/19.
 //  Copyright © 2019 Pablo Ramirez. All rights reserved.
 //
 
