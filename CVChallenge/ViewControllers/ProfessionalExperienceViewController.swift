@@ -22,7 +22,6 @@ class ProfessionalExperienceViewController: UIViewController {
         profExpCollectionView?.register(UINib(nibName: "ProfessionalExperienceViewCell", bundle: nil), forCellWithReuseIdentifier: "profExpCell")
         
         professionalExperiencePresenter?.attachView(self)
-        professionalExperiencePresenter?.initView()
         professionalExperiencePresenter?.getJobs()
     }
     
@@ -40,12 +39,6 @@ class ProfessionalExperienceViewController: UIViewController {
 }
 
 extension ProfessionalExperienceViewController: ProfessionalExperienceView{
-    
-    func initView() {
-        
-//        profExpCollectionView?.isAccessibilityElement = true
-//        profExpCollectionView?.accessibilityIdentifier = "profExpCollectionV"
-    }
     
     func setJobs(jobs: [Job]) {
         

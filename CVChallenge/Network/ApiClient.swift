@@ -15,13 +15,21 @@ protocol ApiClientProtocol {
 
 public class ApiClient{
     
-    private func execute(_ urlRequest: URLRequest, completionHandler: @escaping (PersonalData?, ApiError?) -> Void){
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForResource = 60.0
+    private func execute(_ urlRequest: URLRequest, session: URLSession!=nil, completionHandler: @escaping (PersonalData?, ApiError?) -> Void){
         
-        let urlSession = URLSession(configuration: configuration)
+        var urlSession: URLSession?
         
-        let dataTask = urlSession.dataTask(with: urlRequest){ data, response, error in
+        if session == nil{
+            let configuration = URLSessionConfiguration.default
+            configuration.timeoutIntervalForResource = 60.0
+            
+            urlSession = URLSession(configuration: configuration)
+        }
+        else{
+            urlSession = session
+        }
+        
+        let dataTask = urlSession?.dataTask(with: urlRequest){ data, response, error in
             
             guard let responseStatus = response as? HTTPURLResponse, responseStatus.statusCode == 200 else{
                 completionHandler(nil, .httpError)
@@ -43,7 +51,7 @@ public class ApiClient{
             }
         }
         
-        dataTask.resume()
+        dataTask?.resume()
     }
 }
 
@@ -65,4 +73,5 @@ extension ApiClient: ApiClientProtocol{
         
         execute(urlRequest, completionHandler: completionHandler)
     }
+    
 }

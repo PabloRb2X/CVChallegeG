@@ -18,41 +18,56 @@ class UiTests: XCTestCase {
 
     func test_navigation_app() {
         
+        XCUIDevice.shared.orientation = .portrait
+        
         let app = XCUIApplication()
         
         app.scrollViews.otherElements.buttons["showProfExpButton"].tap()
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).staticTexts["Puesto: Programmer"].tap()
-        app.navigationBars["Proyectos"].children(matching: .button).element.tap()
-        app.navigationBars["Experiencia Profesional"].children(matching: .button).element.tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
+        app.navigationBars["Projects"].buttons["projectBackBarButton"].tap()
+        app.navigationBars["Professional Experience"].buttons["profExpBackBarButton"].tap()
+    }
+    
+    func test_showProfExp_Button(){
         
+        XCUIDevice.shared.orientation = .portrait
+        
+        let app = XCUIApplication()
+        app.scrollViews.otherElements.buttons["showProfExpButton"].tap()
+        app.navigationBars["Professional Experience"].buttons["profExpBackBarButton"].tap()
     }
     
     func test_show_projects_view(){
         
+        XCUIDevice.shared.orientation = .portrait
+        
         let app = XCUIApplication()
         app.scrollViews.otherElements.buttons["showProfExpButton"].tap()
         
-        let profexpcollectionvCollectionView2 = app.collectionViews["profExpCollectionV"]
-        let profexpcollectionvCollectionView = profexpcollectionvCollectionView2
-        profexpcollectionvCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Anzen Digital"]/*[[".cells.matching(identifier: \"profExpCell\").staticTexts[\"Anzen Digital\"]",".staticTexts[\"Anzen Digital\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let collectionViewsQuery = app.collectionViews
+        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Functions: Development of videogames for mobile devices and development of iOS applications"]/*[[".cells.staticTexts[\"Functions: Development of videogames for mobile devices and development of iOS applications\"]",".staticTexts[\"Functions: Development of videogames for mobile devices and development of iOS applications\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        let projectbackbarbButton = app.navigationBars["Projects"].buttons["projectBackBarB"]
-        projectbackbarbButton.tap()
-        profexpcollectionvCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Global HITSS"]/*[[".cells.matching(identifier: \"profExpCell\").staticTexts[\"Global HITSS\"]",".staticTexts[\"Global HITSS\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        projectbackbarbButton.tap()
-        profexpcollectionvCollectionView2.children(matching: .cell).matching(identifier: "profExpCell").element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.tap()
-        projectbackbarbButton.tap()
-        app.navigationBars["Professional Experience"].buttons["profExpBackBarB"].tap()
-        
-        XCTAssert(true, "complete")
+        let projectbackbarbuttonButton = app.navigationBars["Projects"].buttons["projectBackBarButton"]
+        projectbackbarbuttonButton.tap()
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.tap()
+        projectbackbarbuttonButton.tap()
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.tap()
+        projectbackbarbuttonButton.tap()
+        app.navigationBars["Professional Experience"].buttons["profExpBackBarButton"].tap()
     }
     
-    func test_scrolling_elements(){
+    func test_landscape_navigation(){
         
+        XCUIDevice.shared.orientation = .landscapeLeft
         
-        
+        let app = XCUIApplication()
+        let scrollViewsQuery = app.scrollViews
+        scrollViewsQuery.otherElements.containing(.staticText, identifier:"Pablo Ramírez Barrientos").element.swipeRight()
+        scrollViewsQuery.otherElements.buttons["showProfExpButton"].tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
+        app.navigationBars["Projects"].buttons["projectBackBarButton"].tap()
+        app.navigationBars["Professional Experience"].buttons["profExpBackBarButton"].tap()
     }
-
 }
 
 

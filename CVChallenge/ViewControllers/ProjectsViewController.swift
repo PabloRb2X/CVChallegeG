@@ -34,12 +34,6 @@ class ProjectsViewController: UIViewController {
 
 extension ProjectsViewController: ProjectsView{
     
-    func initView() {
-        
-//        projectsCollectionView?.isAccessibilityElement = true
-//        projectsCollectionView?.accessibilityIdentifier = "projectCollectionV"
-    }
-    
     func setProjects(projects: [Project]) {
         
         self.projects = projects

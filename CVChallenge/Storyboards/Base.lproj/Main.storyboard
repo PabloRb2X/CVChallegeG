@@ -386,7 +386,11 @@
                         <viewLayoutGuide key="safeArea" id="7Tb-Kb-RsC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Professional Experience" id="nU6-Hd-QSQ">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="zkm-j6-rF0">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="zkm-j6-rF0" customClass="AccesibilityBarButtonItem" customModule="CVChallenge" customModuleProvider="target">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="accessibilityEnabled" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabelText" value="profExpBackBarButton"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="backEvent:" destination="lSu-rj-E7a" id="r2u-ie-jE2"/>
                             </connections>
@@ -448,7 +452,11 @@
                         <viewLayoutGuide key="safeArea" id="dR8-jw-h9e"/>
                     </view>
                     <navigationItem key="navigationItem" title="Projects" id="5k9-09-DVl">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="JBV-Yg-tzH">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="JBV-Yg-tzH" customClass="AccesibilityBarButtonItem" customModule="CVChallenge" customModuleProvider="target">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="accessibilityEnabled" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabelText" value="projectBackBarButton"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="backEvent:" destination="w18-Wm-RFr" id="2G8-9G-tZG"/>
                             </connections>
